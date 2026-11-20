@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "description": "Multiple-choice questions generated from one small cluster of the concept graph.",
+  "properties": {
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question": {"type": "string", "description": "The question stem, self-contained."},
+          "options": {"type": "array", "items": {"type": "string"}, "description": "Exactly 4 answer texts, without letters, of similar length. Wrong options are plausible mistakes from the same cluster, not silly and not from other topics."},
+          "correct_index": {"type": "integer", "description": "Index (0 to 3) of the correct option."},
+          "explanation": {"type": "string", "description": "Why the correct option is right and, briefly, why a common wrong option is not. Written like a teacher, pointing to the page. Never mentions a graph and never refers to options by position (options get reordered)."},
+          "concept_ids": {"type": "array", "items": {"type": "string"}, "description": "ids of the concepts this question tests, taken from the input cluster."},
+          "uses_relation": {"type": "boolean", "description": "True only if answering needs the link between two concepts (order, part-of, contrast), not just one definition."},
+          "source_file": {"type": "string", "description": "File name from the input that supports the answer."},
+          "source_page": {"type": "integer", "description": "Page number from the input that supports the answer."},
+          "difficulty": {"type": "string", "enum": ["easy", "medium", "hard"]}
+        },
+        "required": ["question", "options", "correct_index", "explanation", "concept_ids", "uses_relation", "source_file", "source_page", "difficulty"]
+      }
+    }
+  },
+  "required": ["questions"]
+}

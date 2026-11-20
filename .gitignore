@@ -1,0 +1,16 @@
+# secrets
+.env
+*.env
+
+# generated outputs
+graph.json
+quiz.json
+
+# course material
+*.pdf
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/

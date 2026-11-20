@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "description": "Concept graph extracted from a chunk of lecture pages.",
+  "properties": {
+    "concepts": {
+      "type": "array",
+      "description": "Key concepts taught in these pages. Skip trivia, examples without a name, and administrative text.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {"type": "string", "description": "Short lowercase slug, unique within this response, e.g. 'binary-search-tree'."},
+          "name": {"type": "string", "description": "Concept name as a student would say it."},
+          "definition": {"type": "string", "description": "One or two sentences, using only what the pages say."},
+          "importance": {"type": "string", "enum": ["core", "supporting"], "description": "core = a main idea of this topic; supporting = detail or helper idea."},
+          "pages": {"type": "array", "items": {"type": "integer"}, "description": "Page numbers where the concept is explained. Use the numbers from the [[PAGE n]] markers only."}
+        },
+        "required": ["id", "name", "definition", "importance", "pages"]
+      }
+    },
+    "relations": {
+      "type": "array",
+      "description": "Directed links between concepts, each supported by the text.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source_id": {"type": "string", "description": "id of the concept the relation starts from."},
+          "target_id": {"type": "string", "description": "id of the concept the relation points to."},
+          "type": {"type": "string", "enum": ["prerequisite_of", "part_of", "example_of", "contrasts_with", "related_to"], "description": "prerequisite_of: source must be understood before target. part_of: source is a component of target. example_of: source is an instance of target. contrasts_with: the pages compare them. related_to: only if none of the others fit."},
+          "explanation": {"type": "string", "description": "One short sentence saying why they are linked."},
+          "page": {"type": "integer", "description": "Page number that supports this link, from the [[PAGE n]] markers."}
+        },
+        "required": ["source_id", "target_id", "type", "explanation", "page"]
+      }
+    }
+  },
+  "required": ["concepts", "relations"]
+}
