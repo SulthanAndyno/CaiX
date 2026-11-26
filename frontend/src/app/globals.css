@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #F6F8FC;
+  --surface: #FFFFFF;
+  --border: #DCE3F0;
+  --text: #0B1F4B;
+  --text-muted: #4A5B7D;
+  --primary: #15367A;
+  --accent: #FF6B6B;
+  --accent-text: #C93636;
+  --link: #0369A1;
+  --success: #15803D;
+  --success-bg: #DCFCE7;
+  --error: #B91C1C;
+  --error-bg: #FEE2E2;
+  --warning: #92400E;
+  --warning-bg: #FEF3C7;
+  --graph-canvas: #F8FAFF;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-link: var(--link);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-error: var(--error);
+  --color-error-bg: var(--error-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-graph-canvas: var(--graph-canvas);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
